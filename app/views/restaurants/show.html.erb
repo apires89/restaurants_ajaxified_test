@@ -1,18 +1,25 @@
 <!-- app/views/restaurants/show.html.erb -->
-<h1><%= @restaurant.name %> <small><%= @restaurant.address %></small></h1>
-<h2>
-  <%= pluralize @restaurant.reviews.size, "review" %>
-</h2>
-
-<div id="reviews">
-  <% if @restaurant.reviews.blank? %>
-    Be the first to leave a review for <%= @restaurant.name %>
-  <% else %>
-    <% @restaurant.reviews.each do |review| %>
-      <%= render 'reviews/show', review: review %>
+<div class="show-page restaurant" style="margin-left: 25%;margin-right: 25%;">
+  <div>
+    <h1><%= @restaurant.name %></h1>
+    <p><small><%= @restaurant.address %></small></p>
+    <div class="image" style="height: 200px;">
+      <%= image_tag 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-3.6857,40.3981,17.18,341,34/300x200?access_token=pk.eyJ1IjoiYXBpcmVzODkiLCJhIjoiY2phOXNrbXc0MGlwYTJ3bmloMmh0d2hrciJ9.J1Pq8iOWc--IlhEtbzdGjQ', style:"height:100%;" %>
+    </div>
+    <h2>
+      <%= pluralize @restaurant.reviews.size, "review" %>
+    </h2>
+  </div>
+  <div id="reviews">
+    <% if @restaurant.reviews.blank? %>
+      Be the first to leave a review for <%= @restaurant.name %>
+    <% else %>
+      <% @restaurant.reviews.each do |review| %>
+        <%= render 'reviews/show', review: review %>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= render 'reviews/form', restaurant: @restaurant, review: @review %>
+    <%= render 'reviews/form', restaurant: @restaurant, review: @review %>
+  </div>
 </div>
 
 
