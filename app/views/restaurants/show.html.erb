@@ -1,16 +1,13 @@
 <!-- app/views/restaurants/show.html.erb -->
-<div class="show-page restaurant" style="margin-left: 25%;margin-right: 25%;">
+<div class="show-page restaurant">
   <div>
     <h1><%= @restaurant.name %></h1>
     <p><small><%= @restaurant.address %></small></p>
-    <div class="image" style="height: 200px;">
-      <%= image_tag 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-3.6857,40.3981,17.18,341,34/300x200?access_token=<%= ENV["MAPBOX"] %>', style:"height:100%;" %>
-    </div>
     <h2>
       <%= pluralize @restaurant.reviews.size, "review" %>
     </h2>
   </div>
-  <div id="reviews">
+  <div id="reviews" style="display: inline-block;">
     <% if @restaurant.reviews.blank? %>
       Be the first to leave a review for <%= @restaurant.name %>
     <% else %>
